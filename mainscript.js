@@ -13,6 +13,9 @@ function onAdsBlocked(callback) {
   xhr.onerror = ()=>{
     console.log(xhr.status);
   }
+  
+  xhr.open("GET", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+  xhr.send();
         
  }
   
