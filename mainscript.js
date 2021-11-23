@@ -6,6 +6,13 @@ function onAdsBlocked(callback) {
       if (xhr.response !== cache) {
         callback()
       }
-        
     }
+  }
+  xhr.timeout = 3000;
+  xhr.ontimeout = callback;
+  xhr.onerror = ()=>{
+    console.log(xhr.status);
+  }
+        
+ }
   
