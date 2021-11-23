@@ -16,3 +16,22 @@ function onAdsBlocked(callback) {
         
  }
   
+function onBlockedElse(callback, elseCallback) {
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = ()=>{
+    if (xhr.readyState == 4) {
+      if (xhr.response !== cache) {
+        callback()
+      } else if (xhr.response === cache) {
+        elseCallback()
+      }
+    }
+  }
+  xhr.timeout = 3000;
+  xhr.ontimeout = callback;
+  
+  xhr.open("GET", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js");
+  xhr.send();
+        
+ }
+  
